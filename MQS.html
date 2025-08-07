@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+  <meta name="theme-color" content="#023e8a">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ بتسأل؟ تعالى نجاوبك!</title>
+<link rel="icon" type="image/x-icon" href="logo.ico">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'Cairo', sans-serif; }
+  a {
+    padding: 10px;
+    background-attachment: fixed;
+    background-color: #e1bee7;
+    border: none;
+    border-radius: 15px;
+  }
+  a:hover {
+    background-color: #d1c4e9;
+    color: #673ab7;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-yellow-50 to-yellow-100 p-6">
+
+<a href="index.html">الصفحه الرئيسيه</a>
+
+<header class="text-center mb-8">
+  <h1 class="text-3xl md:text-4xl font-bold text-yellow-600 mb-2">✨ بتسأل؟ تعالى نجاوبك!</h1>
+  <p class="text-gray-600">أسئلة بتدور في دماغنا وإجابات صريحة وبسيطة ❤️</p>
+</header>
+
+<main class="grid gap-6 md:grid-cols-2">
+  <!-- الأسئلة -->
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">هل الحب حرام؟</h2>
+    <button onclick="toggleAnswer(0)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer0" class="hidden text-gray-700 mt-2">الحب نفسه مش حرام.. لكن طريقة التعامل هي اللي بتحكم. ❤️</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه الصلاة بتضايقني؟</h2>
+    <button onclick="toggleAnswer(1)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer1" class="hidden text-gray-700 mt-2">ده طبيعي يحصل أوقات.. جدد نيتك وفكر إن الصلاة لقاء مع ربنا. 🤍</p>
+  </div>
+
+<main class="grid gap-6 md:grid-cols-2">
+  <!-- كل سؤال بنسخة -->
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">هل الحب حرام؟</h2>
+    <button onclick="toggleAnswer(0)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer0" class="hidden text-gray-700 mt-2">الحب نفسه مش حرام.. لكن طريقة التعامل هي اللي بتحكم. لو حب صادق بحدود الشرع، تمام، لكن العلاقات اللي بتخرج عن ده هي المشكلة. ❤️</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه الصلاة بتضايقني؟</h2>
+    <button onclick="toggleAnswer(1)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer1" class="hidden text-gray-700 mt-2">ده طبيعي يحصل أوقات بسبب وساوس أو فتور. حاول تفتكر إن الصلاة لقاء مع ربنا مش مجرد فرض، وحاول تجدد نيتك. 🤍</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">لو ما قلتش لأمي كل حاجة.. أبقى كداب؟</h2>
+    <button onclick="toggleAnswer(2)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer2" class="hidden text-gray-700 mt-2">مش لازم تقول كل تفاصيلك لو مش في ضرر ولا كذب. الكذب حرام لو قلت عكس الحقيقة، لكن الاحتفاظ بحاجات خاصة مش حرام طول ما مش غلط. ☘️</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ينفع أصاحب ولد/بنت في المدرسة؟</h2>
+    <button onclick="toggleAnswer(3)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer3" class="hidden text-gray-700 mt-2">الصداقة البريئة صعبة جدًا تتحقق بين ولد وبنت خصوصًا في السن ده، وغالبًا الشيطان بيتدخل. الصح تبعد وتحافظ على قلبك ودينك. 🫶</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">أنا مش بحب شكلي.. ده حرام؟</h2>
+    <button onclick="toggleAnswer(4)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer4" class="hidden text-gray-700 mt-2">تزعل من نفسك مش حرام لكن ربنا خلقك بأحسن صورة، والأفضل ترضى وتحمد ربنا وتشتغل على تحسين نفسك داخليًا وخارجيًا. 🌸</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه ربنا خلق الشر؟</h2>
+    <button onclick="toggleAnswer(5)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer5" class="hidden text-gray-700 mt-2">الشر جزء من الابتلاء والاختبار في الدنيا، ومنه بنتعلم ونقرب من ربنا أكتر. وكل حاجة ربنا بيخلقها ليها حكمة حتى لو مش فاهمينها دلوقتي. 🌱</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه مش بحس بطعم العبادة؟</h2>
+    <button onclick="toggleAnswer(6)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer6" class="hidden text-gray-700 mt-2">ده طبيعي يحصل في فترات الفتور. جدد نيتك، اقرأ عن الجنة والنار، وافتكر إن القلب محتاج دايمًا تجديد علشان يحس. 🤍</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه لازم ألبس محتشم؟</h2>
+    <button onclick="toggleAnswer(7)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer7" class="hidden text-gray-700 mt-2">الحجاب والاحتشام حماية وكرامة قبل ما يكون فرض. ربنا أمرنا بيه علشان نعيش بسلام ونحافظ على نظرة الناس لينا وعلى قلوبنا. 🌼</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه بحس إني بعيد عن ربنا؟</h2>
+    <button onclick="toggleAnswer(8)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer8" class="hidden text-gray-700 mt-2">أوقات بنغلط أو ننشغل عن العبادة، لكن مجرد الإحساس ده دليل قلبك صاحي ولسه فيه خير. حاول ترجع بخطوة بسيطة زي دعاء أو تسبيحة. 🤲</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">هل ربنا هيغفر كل ذنوبي؟</h2>
+    <button onclick="toggleAnswer(9)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer9" class="hidden text-gray-700 mt-2">آه ربنا غفور رحيم جدًا جدًا، مهما كان ذنبك كبير.. لو تبت توبة صادقة هتبدأ صفحة جديدة معاه. 🌸</p>
+  </div>
+
+  <!-- أسئلة جديدة -->
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه أوقات بحس إني مش مستاهل رحمة ربنا؟</h2>
+    <button onclick="toggleAnswer(10)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer10" class="hidden text-gray-700 mt-2">ده وسواس من الشيطان عشان يبعدك عن التوبة.. ربنا رحيم جدًا وبيناديك حتى لو ذنوبك كبيرة جدًا. 🤍</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">هل كل حاجة بتحصل ليا قدر؟</h2>
+    <button onclick="toggleAnswer(11)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer11" class="hidden text-gray-700 mt-2">آه.. كل حاجة بتحصل مكتوبة من ربنا بحكمة، حتى لو مش فاهمها دلوقتي. 📝</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه في ناس طيبة بتتظلم؟</h2>
+    <button onclick="toggleAnswer(12)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer12" class="hidden text-gray-700 mt-2">الدنيا مش دار عدل، دي دار ابتلاء.. والعدل الحقيقي في الآخرة عند ربنا. 🌱</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ينفع أدعي بحاجة شبه مستحيلة؟</h2>
+    <button onclick="toggleAnswer(13)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer13" class="hidden text-gray-700 mt-2">آه طبعًا! مفيش مستحيل عند ربنا.. ادعي وانت واثق إنه قادر على كل شيء. 🤲</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه ربنا ما بيستجيبش بسرعة؟</h2>
+    <button onclick="toggleAnswer(14)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer14" class="hidden text-gray-700 mt-2">ممكن يكون لسه الوقت المناسب مجاش.. أو ربنا مأخره لخير أكبر.. أو بيصرف عنك شر. 🕰️</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">هل ينفع أصاحب حد ملحد؟</h2>
+    <button onclick="toggleAnswer(15)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer15" class="hidden text-gray-700 mt-2">ينفع تنصحه وتحبه كإنسان لكن تصاحبه بقلبك لأ.. لأنه ممكن يأثر على إيمانك. ⚠️</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه بحس إني فاشل دايمًا؟</h2>
+    <button onclick="toggleAnswer(16)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer16" class="hidden text-gray-700 mt-2">ده ممكن يكون بسبب مقارنة نفسك بالناس.. ركز على نفسك وافتكر إنك بتكبر خطوة بخطوة. 🌸</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">هل التفكير الكتير في المستقبل غلط؟</h2>
+    <button onclick="toggleAnswer(17)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer17" class="hidden text-gray-700 mt-2">مش غلط تخطط.. لكن القلق الزايد بيتعب القلب والعقل. خليك دايمًا بين التوكل والعمل. ☘️</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">هل ينفع أحب حد معرفتوش إلا أونلاين؟</h2>
+    <button onclick="toggleAnswer(18)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer18" class="hidden text-gray-700 mt-2">القلب ممكن يتعلق، لكن ده خطر جدًا لأنك مش شايفه حقيقي ولا عارف شخصيته كاملة. والأصح تبعد. 🧡</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">هل ممكن أتوب بعد ما عملت ذنب كبير؟</h2>
+    <button onclick="toggleAnswer(19)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer19" class="hidden text-gray-700 mt-2">آه طبعًا! ربنا بيغفر كل شيء مهما كان كبير لو التوبة صادقة. ❤️‍🔥</p>
+  </div>
+</main>
+  <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <h2 class="font-semibold text-lg">ليه ربنا ما بيستجيبش الدعاء بسرعة؟</h2>
+    <button onclick="toggleAnswer(14)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+    <p id="answer14" class="hidden text-gray-700 mt-2">ربنا بيستجيب في الوقت المناسب بحكمته.. يا إما يعطيك اللي طلبته، يا إما يدفع عنك شر، أو يخليها أجر في الآخرة. 🌿</p>
+  </div>
+</main>
+
+<script>
+function toggleAnswer(index) {
+  var answer = document.getElementById('answer' + index);
+  answer.classList.toggle('hidden');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="theme-color" content="#023e8a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحة التفاعل | Muslim Teenager</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+      animation: bgMove 15s infinite alternate;
+    }
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .pulse {
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    a{
+        padding: 10px;
+        background-attachment: fixed;
+        background-color: #e1bee7;
+        border: none;
+        border-radius: 15px;
+    }
+    a:hover{
+        background-color: #d1c4e9;
+        color: #673ab7;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, color 0.3s ease
+    
+    }
+  </style>
+</head>
+<a href="index.html">الصفحه الرئيسيه</a>
+<body class="text-gray-800 p-4 space-y-8">
+
+<header class="text-center py-6 bg-white/70 backdrop-blur rounded-xl shadow-xl">
+  <h1 class="text-3xl font-extrabold text-purple-800 drop-shadow-md">✨ صفحة التفاعل ✨</h1>
+  <p class="text-sm text-gray-600">خلي إيمانك ينور قلبك كل يوم 💜</p>
+</header>
+
+<main class="space-y-8">
+
+  <!-- 🌿 عداد التسبيح -->
+  <section class="bg-white/80 backdrop-blur p-6 rounded-3xl shadow-2xl text-center space-y-5">
+    <h2 class="text-2xl font-bold text-green-800 drop-shadow">🕌 عدّاد التسبيح</h2>
+    <p class="text-gray-700">اضغط وعدّد تسبيحك بحب وإيمان 🤍</p>
+    <div id="count" class="text-5xl font-black text-green-900 drop-shadow-lg">0</div>
+    <button onclick="incrementCounter()" class="pulse px-8 py-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-lg font-semibold rounded-full shadow-lg hover:scale-105 transition duration-300">
+      سبحان الله 🌿
+    </button>
+  </section>
+
+  <!-- 🌟 تحديات إيمانية -->
+  <section class="bg-white/80 backdrop-blur p-6 rounded-3xl shadow-2xl space-y-5">
+    <h2 class="text-2xl font-bold text-purple-800 text-center drop-shadow">💪 تحديات إيمانية</h2>
+    <p class="text-gray-700 text-center">أكمل التحديات وراقب تقدّمك ✨</p>
+    
+    <div class="space-y-4">
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" onchange="updateProgress()" class="accent-purple-600 w-5 h-5">
+        <span class="text-gray-800">قراءة سورة الكهف الجمعة القادمة</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" onchange="updateProgress()" class="accent-purple-600 w-5 h-5">
+        <span class="text-gray-800">صلاة الفجر جماعة لمدة أسبوع</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" onchange="updateProgress()" class="accent-purple-600 w-5 h-5">
+        <span class="text-gray-800">أذكار الصباح والمساء ليوم كامل</span>
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden shadow-inner">
+        <div id="progressBar" class="bg-gradient-to-r from-purple-400 to-purple-700 h-4 rounded-full transition-all duration-500" style="width: 0%;"></div>
+      </div>
+      <p class="text-center text-sm mt-1 font-semibold text-purple-800">تقدّمك: <span id="progressText">0%</span></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="text-center text-xs text-gray-600 mt-8">
+  &copy; 2025 Muslim Teenager. جميع الحقوق محفوظة.
+</footer>
+
+<script>
+  let count = 0;
+  function incrementCounter() {
+    count++;
+    document.getElementById('count').innerText = count;
+  }
+
+  function updateProgress() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checked = Array.from(checkboxes).filter(c => c.checked).length;
+    const percent = Math.round((checked / checkboxes.length) * 100);
+    document.getElementById('progressBar').style.width = percent + '%';
+    document.getElementById('progressText').innerText = percent + '%';
+  }
+</script>
+
+</body>
+</html>

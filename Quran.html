@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="theme-color" content="#023e8a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muslim Teenager 🩵✨ | Quran Pages</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700&display=swap');
+    
+    * {
+      font-family: 'Cairo', sans-serif !important;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #b2ebf2, #e1f5fe);
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00acc1;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 2.2em;
+      color: #007b9e;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    iframe {
+      width: 90%;
+      max-width: 800px;
+      height: 600px;
+      border: 3px solid #00acc1;
+      border-radius: 15px;
+      margin: 20px auto;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      background: white;
+    }
+    .controls {
+      margin: 10px 0;
+    }
+    button {
+      background: linear-gradient(90deg, #00acc1, #26c6da);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #0097a7, #00bcd4);
+      transform: scale(1.05);
+    }
+    .info {
+      margin-top: 8px;
+      color: #007b9e;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ شعار الموقع -->
+  <img src="logo.jpg" alt="Logo" class="logo">
+
+  <h1>📖 مصحف Muslim Teenager 🩵✨</h1>
+
+  <iframe id="quranFrame" src="https://surahquran.com/page-quran-1.html"></iframe>
+
+  <div class="controls">
+    <button onclick="nextPage()">التالي </button>
+    <button onclick="prevPage()"> السابق</button>
+  </div>
+  
+  <div class="info">
+    صفحة <span id="pageNum">1</span> من 604
+  </div>
+
+  <div class="controls">
+    <button onclick="goHome()">🏠 الصفحة الرئيسية</button>
+  </div>
+
+  <script>
+    let currentPage = 1;
+    const maxPages = 604;
+    let autoSlide = false;
+    let slideInterval;
+
+    function updateFrame() {
+      document.getElementById('quranFrame').src = `https://surahquran.com/page-quran-${currentPage}.html`;
+      document.getElementById('pageNum').innerText = currentPage;
+    }
+
+    function nextPage() {
+      if (currentPage < maxPages) {
+        currentPage++;
+      } else {
+        currentPage = 1; // يعيد من البداية
+      }
+      updateFrame();
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+      } else {
+        currentPage = maxPages; // يروح لآخر صفحة
+      }
+      updateFrame();
+    }
+
+    function goHome() {
+      window.location.href = 'index.html'; // ✨ هنا حط لينك الصفحة الرئيسية بتاعتك
+    }
+  </script>
+</body>
+</html>

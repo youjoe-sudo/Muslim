@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="theme-color" content="#023e8a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اختبر لسانك – تحدي الشعر الجاهلي</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #fff, #f1f1f1);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #8d6748;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    .poem-box {
+      background: #faf3e0;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #8d6748;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #a97e5c;
+    }
+    .info-box {
+      background: #fff8ec;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-top: 10px;
+      line-height: 1.8;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      color: #777;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>اختبر لسانك – تحدي الشعر الجاهلي</header>
+
+<main>
+  <div class="poem-box" id="poem">
+    ألا ليتَ الشّبابَ يعودُ يومًا<br>
+    فأُخبرَهُ بما فعَلَ المَشيبُ
+  </div>
+
+  <div class="buttons">
+    <button onclick="nextPoem()">بدّل التحدي</button>
+    <button onclick="speakPoem()">اسمع النطق الصحيح</button>
+    <button onclick="recordVoice()">سجل صوتك</button>
+  </div>
+
+  <div class="info-box" id="info">
+    📜 <strong>الشاعر:</strong> أبو العتاهية<br>
+    📝 <strong>شرح كلمات:</strong> ليتَ: تمنّي، المشيب: الشيب (الكِبر في السن)
+  </div>
+</main>
+
+<footer>© موقع Muslim Teenager – ترفيه بنكهة تراثية عربية 🖤</footer>
+
+<script>
+const poems = [
+  {
+    text: `ألا ليتَ الشّبابَ يعودُ يومًا<br>فأُخبرَهُ بما فعَلَ المَشيبُ`,
+    info: `📜 <strong>الشاعر:</strong> أبو العتاهية<br>📝 <strong>شرح كلمات:</strong> ليتَ: تمنّي، المشيب: الشيب (الكِبر في السن)`
+  },
+  {
+    text: `إذا الشّعبُ يومًا أرادَ الحياةَ<br>فلا بُدّ أنْ يَستجيبَ القَدرُ`,
+    info: `📜 <strong>الشاعر:</strong> أبو القاسم الشابي<br>📝 <strong>شرح كلمات:</strong> القدر: القضاء الإلهي`
+  },
+  {
+    text: `قِفا نَبكِ مِن ذِكرى حبيبٍ ومَنزلِ<br>بسِقطِ اللِّوى بينَ الدَّخولِ فَحَوْمَلِ`,
+    info: `📜 <strong>الشاعر:</strong> امرؤ القيس<br>📝 <strong>شرح كلمات:</strong> قفا: قف أنت وصاحبك، نبك: نبكِ معًا`
+  },
+  {
+    text: `لَعَمرُكَ ما تَجزي مُفَدّاةُ شُقَّتي...`,
+    info: `📜 <strong>الشاعر:</strong> الفرزدق<br>📝 <strong>شرح كلمات:</strong> قصيدة فصيحة جاهلية مليانة صور قوية`
+  },
+  {
+    text: `إذا غامَرْتَ في شَرَفٍ مَرُومِ<br>فَلا تَقنَعْ بما دونَ النّجومِ`,
+    info: `📜 <strong>الشاعر:</strong> المتنبي<br>📝 <strong>شرح كلمات:</strong> مَرُوم: مطلوب أو مرغوب`
+  },
+  {
+    text: `إِذا مَضى يَومٌ وَلَم أَقتَبِسْ هُدىً<br>وَلَم أَستَفِد عِلمًا فَما ذاكَ مِن عُمري`,
+    info: `📜 <strong>الشاعر:</strong> ابن مسعود<br>📝 <strong>شرح كلمات:</strong> أَقتَبِس: أتعلم أو أزداد علمًا`
+  },
+  {
+    text: `لَولا المَشَقّةُ سادَ النّاسُ كُلُّهُمُ<br>الجودُ يُفقِرُ والإقدامُ قَتّالُ`,
+    info: `📜 <strong>الشاعر:</strong> المتنبي<br>📝 <strong>شرح كلمات:</strong> الجود: الكرم، يُفقِرُ: يؤدي للفقر`
+  },
+  {
+    text: `وما نَيلُ المَطالِبِ بالتّمنّي<br>ولكن تُؤخَذُ الدّنيا غِلابا`,
+    info: `📜 <strong>الشاعر:</strong> أحمد شوقي<br>📝 <strong>شرح كلمات:</strong> غِلابا: بالقوة والعزيمة`
+  },
+  {
+    text: `لِكُلِّ شَيءٍ إِذا ما تَمَّ نُقصانُ<br>فَلا يُغَرَّ بِطيبِ العَيشِ إِنسانُ`,
+    info: `📜 <strong>الشاعر:</strong> أبو البقاء الرندي<br>📝 <strong>شرح كلمات:</strong> يُغَرَّ: ينخدع`
+  },
+  {
+    text: `أَعلِّلُ النَفسَ بِالآمالِ أَرقُبُها<br>ما أَضيقَ العَيشَ لولا فُسحَةُ الأَمَلِ`,
+    info: `📜 <strong>الشاعر:</strong> المتنبي<br>📝 <strong>شرح كلمات:</strong> أعلل: أواسي، أرقبها: أترقبها`
+  },
+  {
+    text: `وإذا كانتِ النفوسُ كبارًا<br>تعبَتْ في مُرادِها الأجسامُ`,
+    info: `📜 <strong>الشاعر:</strong> المتنبي<br>📝 <strong>شرح كلمات:</strong> مرادها: ما تريده`
+},
+{
+    text: `لَعَمرُكَ ما تَجزي مُفَدّاةُ شُقَّتي<br>
+وَإِخطارُ نَفسي الكاشِحينَ وَمالِيا<br>
+وَسَيري إِذا ما الطِرمِساءُ تَطَخطَخَت<br>
+عَلى الرَكبِ حَتّى يَحسَبوا القُفَّ وادِيا<br>
+وَقيلي لِأَصحابي أَلَمّا تَبَيَّنوا<br>
+هَوى النَفسِ قَد يَبدو لَكُم مِن أَمامِيا<br>
+وَمُنتَجِعٍ دارَ العَدُوِّ كَأَنَّهُ<br>
+نَشاصُ الثُرَيّا يَستَظِلُّ العَوالِيا<br>
+كَثيرِ وَغى الأَصواتِ تَسمَعُ وَسطَهُ<br>
+وَئيداً إِذا جَنَّ الظَلامُ وَحادِيا<br>
+وَإِن حانَ مِنهُ مَنزِلُ اللَيلِ خِلتَهُ<br>
+حِراجًا تَرى ما بَينَهُ مَتَدانِيا<br>
+وَإِن شَذَّ مِنهُ الأَلفُ لَم يُفتَقَد لَهُ<br>
+وَلَو سارَ في دارِ العَدُوِّ لَيالِيا<br>
+نَزَلنا لَهُ إِنّا إِذا مِثلُهُ اِنتَهى<br>
+إِلَينا قَرَيناهُ الوَشيجَ المَواضِيا`,
+    info: `📜 <strong>الشاعر:</strong> الفرزدق<br>📝 <strong>شرح كلمات:</strong> قصيدة فصيحة جاهلية مليانة صور قوية`
+}
+
+];
+
+let current = 0;
+
+function nextPoem() {
+  current = (current + 1) % poems.length;
+  document.getElementById('poem').innerHTML = poems[current].text;
+  document.getElementById('info').innerHTML = poems[current].info;
+}
+
+function speakPoem() {
+  const text = poems[current].text.replace(/<br>/g, ', ');
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'ar';
+  const voices = speechSynthesis.getVoices();
+  const arabicVoice = voices.find(v => v.lang.startsWith('ar'));
+  if (arabicVoice) utterance.voice = arabicVoice;
+  speechSynthesis.speak(utterance);
+}
+
+// تسجيل الصوت
+let mediaRecorder;
+let audioChunks = [];
+
+async function recordVoice() {
+  if (!mediaRecorder || mediaRecorder.state === "inactive") {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder = new MediaRecorder(stream);
+      audioChunks = [];
+      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(audioChunks, { type: 'audio/ogg' });
+        const audioURL = URL.createObjectURL(blob);
+        const audio = new Audio(audioURL);
+        audio.play();
+        // تم حذف الإرسال لتليجرام
+      };
+      mediaRecorder.start();
+    } catch (error) {
+      alert('❌ لم أستطع الوصول للميكروفون. تأكد من السماح للتطبيق.');
+    }
+  } else {
+    mediaRecorder.stop();
+  }
+}
+    </script>
+
+
+</body>
+</html>

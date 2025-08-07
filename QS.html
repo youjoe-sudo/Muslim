@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="theme-color" content="#023e8a">
+  <title>Send to Telegram</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <style>
+    body {
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    textarea {
+      width: 90%;
+      max-width: 400px;
+      height: 120px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      resize: none;
+      outline: none;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    button {
+      background: #00c6ff;
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+  <h2>اسألني سؤال 👇</h2>
+  <textarea id="msg" placeholder="اكتب سؤالك هنا ورقم هاتفك"></textarea><br>
+  <button onclick="sendMessage()">ارسال</button>
+
+  <script>
+    function sendMessage() {
+      var message = document.getElementById("msg").value;
+      var token = "8411032010:AAF7cC7ZhUh1ZzGiVAQYWASUH8gVCGRRW54";
+      var chat_id = "7752359121";
+      var url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chat_id,
+          text: message
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        alert("✅ تم ارسال الرسالة!");
+      })
+      .catch(error => {
+        console.error(error);
+        alert("❌ حصل خطأ في الارسال!");
+      });
+    }
+  </script>
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/688b55fecabd5919319175f7/1j1g4fqog';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

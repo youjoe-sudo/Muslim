@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨ أسئلة وإجابات</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-yellow-50 to-yellow-100 p-6 font-[Cairo]">
+
+  <header class="text-center mb-8">
+    <h1 class="text-3xl md:text-4xl font-bold text-yellow-600 mb-2">✨ بتسأل؟ تعالى نجاوبك!</h1>
+    <p class="text-gray-600">20 سؤال مهم بإجابات مبسطة وواضحة</p>
+  </header>
+
+  <main class="grid gap-6 md:grid-cols-2">
+    <!-- سؤال 1 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">1. هل الحب حرام؟</h2>
+      <button onclick="toggleAnswer(0)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer0" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن عثيمين والألباني قالوا: الحب نفسه مش حرام، لكن لو وصل للمعصية أو أدى لما نهانا الله عنه يبقى حرام.<br>
+        الدليل: «ولا تقربوا الزنى إنه كان فاحشة وساء سبيلا» [الإسراء:32]<br>
+        شرح: الحب طبيعي، لكن أي حاجة تؤدي للحرام ممنوعة.
+      </div>
+    </div>
+
+    <!-- سؤال 2 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">2. ليه الصلاة بتضايقني؟</h2>
+      <button onclick="toggleAnswer(1)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer1" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز والألباني قالوا: أوقات الملل أو الكسل طبيعي يحصل، المهم تجدد النية وتحاول تحس بصلاتك.<br>
+        الدليل: «أرحنا بها يا بلال» (البخاري)<br>
+        شرح: لما تحس بالضيق، جدد نيتك وفكر إن الصلاة لقاء مع ربك.
+      </div>
+    </div>
+
+    <!-- سؤال 3 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">3. ليه ربنا مش بيستجيب بسرعة؟</h2>
+      <button onclick="toggleAnswer(2)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer2" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز وابن عثيمين قالوا: الدعاء مستجاب دايمًا، بس إما ربنا يديك اللي طلبته أو يمنع عنك شر أو يأجله للآخرة.<br>
+        الدليل: «ما من مسلم يدعو بدعوة إلا أعطاه الله بها إحدى ثلاث...» (مسلم)<br>
+        شرح: الاستجابة دايمًا بتحصل، بس مش لازم بالطريقة اللي في بالك.
+      </div>
+    </div>
+
+    <!-- سؤال 4 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">4. هل الغناء كله حرام؟</h2>
+      <button onclick="toggleAnswer(3)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer3" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: الألباني وابن باز قالوا: الغناء اللي فيه كلمات بذيئة أو يلهي عن الدين حرام، لكن المباح من غير معازف ما فيهوش مشكلة.<br>
+        الدليل: «ومن الناس من يشتري لهو الحديث ليضل عن سبيل الله» [لقمان:6]<br>
+        شرح: الحكم بيختلف حسب الكلمات والأثر على القلب.
+      </div>
+    </div>
+
+    <!-- سؤال 5 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">5. ليه في ناس غنية وناس فقيرة؟</h2>
+      <button onclick="toggleAnswer(4)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer4" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن عثيمين وابن باز قالوا: ربنا قسم الأرزاق لحكمة، عشان يكون في اختبار بالمال والصبر والشكر.<br>
+        الدليل: «نحن قسمنا بينهم معيشتهم في الحياة الدنيا» [الزخرف:32]<br>
+        شرح: التفاوت مش ظلم، هو ابتلاء عشان نتعامل مع بعض بالعدل والرحمة.
+      </div>
+    </div>
+
+    <!-- سؤال 6 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">6. هل الحجاب فرض؟</h2>
+      <button onclick="toggleAnswer(5)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer5" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: الألباني وابن باز قالوا: الحجاب فرض على المسلمة البالغة.<br>
+        الدليل: «وليضربن بخمرهن على جيوبهن» [النور:31]<br>
+        شرح: هو طاعة لربنا وحماية وستر.
+      </div>
+    </div>
+
+    <!-- سؤال 7 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">7. لو فاتتني صلاة أقضيها؟</h2>
+      <button onclick="toggleAnswer(6)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer6" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز وابن عثيمين قالوا: لازم تقضي الصلاة اللي فاتتك فورًا.<br>
+        الدليل: «من نام عن صلاة أو نسيها فليصلها إذا ذكرها» (البخاري ومسلم)<br>
+        شرح: القضاء واجب بمجرد ما تفتكر.
+      </div>
+    </div>
+
+    <!-- سؤال 8 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">8. هل ربنا بيغفر كل الذنوب؟</h2>
+      <button onclick="toggleAnswer(7)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer7" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز وابن عثيمين قالوا: أي ذنب يغتفر لو في توبة صادقة.<br>
+        الدليل: «إن الله يغفر الذنوب جميعًا» [الزمر:53]<br>
+        شرح: مفيش ذنب أكبر من رحمة ربنا.
+      </div>
+    </div>
+
+    <!-- سؤال 9 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">9. هل الانتحار يخرج من الإسلام؟</h2>
+      <button onclick="toggleAnswer(8)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer8" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: الألباني وابن باز قالوا: الانتحار كبيرة، لكن مش كفر يخرج من الإسلام.<br>
+        الدليل: «ومن يقتل نفسه بشيء عذبه الله به» (البخاري)<br>
+        شرح: هو ذنب عظيم لكن صاحبه تحت مشيئة الله.
+      </div>
+    </div>
+
+    <!-- سؤال 10 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">10. ليه ربنا بيبتلينا؟</h2>
+      <button onclick="toggleAnswer(9)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer9" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن عثيمين وابن باز قالوا: الابتلاء اختبار للصبر ورفع للدرجات.<br>
+        الدليل: «ولنبلونكم بشيء من الخوف والجوع...» [البقرة:155]<br>
+        شرح: الابتلاء طريق للثواب ومحو للذنوب.
+      </div>
+    </div>
+
+    <!-- سؤال 11 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">11. هل ربنا بيسامح الكافر لو أسلم؟</h2>
+      <button onclick="toggleAnswer(10)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer10" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز والألباني قالوا: الإسلام يجب ما قبله.<br>
+        الدليل: «قل للذين كفروا إن ينتهوا يغفر لهم ما قد سلف» [الأنفال:38]<br>
+        شرح: أول ما يسلم، ربنا يمسح كل ذنوبه.
+      </div>
+    </div>
+
+    <!-- سؤال 12 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">12. هل العين والحسد حقيقة؟</h2>
+      <button onclick="toggleAnswer(11)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer11" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز وابن عثيمين قالوا: العين والحسد حق.<br>
+        الدليل: «العين حق» (مسلم)<br>
+        شرح: العلاج بالرقية الشرعية والتحصين بالأذكار.
+      </div>
+    </div>
+
+    <!-- سؤال 13 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">13. هل قراءة الأبراج حرام؟</h2>
+      <button onclick="toggleAnswer(12)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer12" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: الألباني وابن باز قالوا: التنجيم والكلام عن الغيب حرام.<br>
+        الدليل: «من أتى كاهنًا...» (مسلم)<br>
+        شرح: الأبراج نوع من الكهانة.
+      </div>
+    </div>
+
+    <!-- سؤال 14 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">14. هل الكذب ينفع أوقات؟</h2>
+      <button onclick="toggleAnswer(13)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer13" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن عثيمين وابن باز قالوا: الكذب حرام إلا في ثلاث حالات: الإصلاح بين الناس، الحرب، وكلام الزوجين لبعض بالود.<br>
+        الدليل: «لا يصلح الكذب إلا في ثلاث...» (مسلم)<br>
+        شرح: الأصل الكذب حرام، لكن في استثناءات محدودة.
+      </div>
+    </div>
+
+    <!-- سؤال 15 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">15. هل التوبة ليها وقت معين؟</h2>
+      <button onclick="toggleAnswer(14)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer14" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز والألباني قالوا: التوبة مقبولة طول ما الروح في الجسد.<br>
+        الدليل: «إن الله يقبل توبة العبد ما لم يغرغر» (الترمذي)<br>
+        شرح: باب التوبة مفتوح لحد لحظة الموت.
+      </div>
+    </div>
+
+    <!-- سؤال 16 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">16. هل مشاهدة الأفلام حرام؟</h2>
+      <button onclick="toggleAnswer(15)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer15" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز والألباني قالوا: الحكم حسب المحتوى، لو فيه حرام يبقى حرام.<br>
+        الدليل: «قل للمؤمنين يغضوا من أبصارهم» [النور:30]<br>
+        شرح: لو يلهي عن ذكر الله أو فيه منكر يبقى حرام.
+      </div>
+    </div>
+
+    <!-- سؤال 17 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">17. هل ربنا بيعذب الأطفال؟</h2>
+      <button onclick="toggleAnswer(16)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer16" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز وابن عثيمين قالوا: الأطفال اللي يموتوا قبل البلوغ يدخلوا الجنة.<br>
+        الدليل: «كل مولود يولد على الفطرة» (البخاري ومسلم)<br>
+        شرح: رحمة ربنا تشملهم.
+      </div>
+    </div>
+
+    <!-- سؤال 18 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">18. هل الرقص حرام؟</h2>
+      <button onclick="toggleAnswer(17)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer17" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز والألباني قالوا: لو فيه اختلاط أو كشف عورات يبقى حرام.<br>
+        الدليل: «ولا يبدين زينتهن إلا...» [النور:31]<br>
+        شرح: الرقص جائز في نطاق ضيق زي للزوج أو النساء مع بعض.
+      </div>
+    </div>
+
+    <!-- سؤال 19 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">19. هل التدخين حرام؟</h2>
+      <button onclick="toggleAnswer(18)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer18" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز وابن عثيمين قالوا: التدخين محرم لأنه ضرر.<br>
+        الدليل: «ولا تقتلوا أنفسكم إن الله كان بكم رحيمًا» [النساء:29]<br>
+        شرح: أي حاجة تضر الصحة حرام.
+      </div>
+    </div>
+
+    <!-- سؤال 20 -->
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold text-lg">20. هل ربنا بيحاسبنا على المشاعر؟</h2>
+      <button onclick="toggleAnswer(19)" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">شوف الإجابة ✨</button>
+      <div id="answer19" class="hidden text-gray-700 mt-2">
+        كلام الشيخ: ابن باز وابن عثيمين قالوا: المشاعر اللي في القلب ربنا ما بيحاسبش عليها إلا لو اتحولت لفعل.<br>
+        الدليل: «إن الله تجاوز لأمتي عما حدثت به أنفسها...» (البخاري ومسلم)<br>
+        شرح: اللي في قلبك مش محسوب إلا لو عملت بيه.
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function toggleAnswer(index) {
+      document.getElementById('answer' + index).classList.toggle('hidden');
+    }
+  </script>
+
+</body>
+</html>

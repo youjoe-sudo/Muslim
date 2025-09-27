@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+    <meta name="theme-color" content="#023e8a">
+  <title>مواقيت الصلاة وتشغيل تلقائي</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+    body {
+      font-family:'Cairo',sans-serif;
+      background: linear-gradient(to bottom,#e0f7fa,#ffffff);
+      color:#004d40;
+      text-align:center;
+      padding:30px;
+    }
+    .box {
+      max-width:500px;
+      margin:auto;
+      background:#ffffffcc;
+      padding:20px;
+      border-radius:15px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    h1 {
+      color:#00796b;
+      margin-bottom:15px;
+    }
+    ul {
+      list-style:none;
+      padding:0;
+      font-size:1.1em;
+      text-align:right;
+    }
+    .countdown {
+      font-size:1.2em;
+      margin:15px 0;
+      color:#00695c;
+    }
+    .azkar-box {
+      max-width:500px;
+      margin:auto;
+      background:#e0f2f1cc;
+      padding:20px;
+      border-radius:15px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      display: none;
+    }
+    .azkar-box h2 {
+      color:#00695c;
+      margin-bottom: 10px;
+    }
+    .azkar-box p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>🕋 مواقيت الصلاة اليوم</h1>
+    <div id="times">... جاري التحميل</div>
+    <div class="countdown" id="countdown"></div>
+    <audio id="adhanAudio" src="161.mp3" preload="auto"></audio>
+  </div>
+
+  <div class="azkar-box" id="azkarBox">
+    <h2>📿 أذكار بعد الصلاة</h2>
+    <p>أستغفر الله</p>
+    <p>أستغفر الله</p>
+    <p>أستغفر الله</p>
+    <p>اللهم أنت السلام ومنك السلام تباركت يا ذا الجلال والإكرام</p>
+    <p>لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير</p>
+    <p>اللهم لا مانع لما أعطيت، ولا معطي لما منعت، ولا ينفع ذا الجد منك الجد</p>
+  </div>
+
+<script>
+  async function fetchTimes(lat, lon) {
+    const d = new Date(), dd=d.getDate(), mm=d.getMonth()+1, yy=d.getFullYear();
+    const url = `https://api.aladhan.com/v1/timings/${dd}-${mm}-${yy}?latitude=${lat}&longitude=${lon}&method=5`;
+    const res = await fetch(url);
+    const json = await res.json();
+    return json.data.timings;
+  }
+
+  function displayTimes(t) {
+    const list = Object.entries(t)
+      .filter(([k])=>["Fajr","Dhuhr","Asr","Maghrib","Isha"].includes(k))
+      .map(([k,v])=>`<li>${k.replace("Dhuhr","الظهر")}: ${v}</li>`).join('');
+    document.getElementById('times').innerHTML = `<ul>${list}</ul>`;
+  }
+
+  let nextTimeDate;
+  function computeNext(t) {
+    const now = new Date();
+    let minDiff = Infinity;
+    for(const [k,v] of Object.entries(t)) {
+      if (!["Fajr","Dhuhr","Asr","Maghrib","Isha"].includes(k)) continue;
+      const [h,m] = v.split(':').map(Number);
+      const dt = new Date(now.getFullYear(),now.getMonth(),now.getDate(),h,m,0);
+      const diff = dt - now;
+      if(diff > 0 && diff < minDiff) { minDiff = diff; nextTimeDate = dt;}
+    }
+    return (minDiff === Infinity) ? null : minDiff;
+  }
+
+  function startCountdown(t) {
+    const cd = document.getElementById('countdown');
+    const audio = document.getElementById('adhanAudio');
+    const azkarBox = document.getElementById('azkarBox');
+    const interval = setInterval(() => {
+      const diff = computeNext(t);
+      if (diff === null) { cd.innerText = "الصلاة التالية: الفجر غداً"; clearInterval(interval); return; }
+      const sec = Math.floor(diff/1000)%60, min = Math.floor(diff/60000)%60, hr = Math.floor(diff/3600000);
+      cd.innerText = `⏳ باقي على الأذان: ${hr}h ${min}m ${sec}s`;
+      if (diff <= 1000) {
+        cd.innerText = "✨ الأذان الآن!";
+        audio.play();
+        azkarBox.style.display = "block";
+        clearInterval(interval);
+      }
+    }, 1000);
+  }
+
+  function init() {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async pos=>{
+        const t = await fetchTimes(pos.coords.latitude,pos.coords.longitude);
+        displayTimes(t); startCountdown(t);
+      }, async()=> {
+        const t = await fetchTimes(30.0444,31.2357); // fallback للقاهرة
+        displayTimes(t); startCountdown(t);
+      });
+    } else {
+      fetchTimes(30.0444,31.2357).then(t=>{ displayTimes(t); startCountdown(t); });
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>

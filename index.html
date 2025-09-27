@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="theme-color" content="#023e8a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muslim Teenager 🩵✨</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Base styles for light mode */
+    body {
+      background: white;
+      color: black;
+      font-family: 'Cairo', sans-serif;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    header {
+      background: linear-gradient(90deg, #00bcd4, #26c6da);
+      color: white;
+      padding: 40px 10px 20px;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      position: relative; /* Added for toggle positioning */
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 18px;
+    }
+
+    #toggleDark {
+      font-size: 28px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      position: absolute;
+      top: 20px; /* Adjusted position */
+      left: 20px; /* Adjusted position */
+      color: white; /* Ensure visibility in header */
+    }
+
+    #toggleDark:hover {
+      transform: scale(1.2);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: white;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #00bcd4;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background: #00bcd4;
+      color: white;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      margin: 25px auto;
+      max-width: 800px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero p {
+      font-size: 22px;
+      color: #333;
+    }
+
+    .point {
+      background-color: #b2ebf2;
+      padding: 30px;
+      border-radius: 90px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .point:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .about {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #ffffffcc;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .about p {
+      font-size: 18px;
+    }
+
+    .questions {
+      max-width: 900px;
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    .questions h2 {
+      font-size: 26px;
+      color: #00bcd4;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      background: white;
+      margin: 12px auto;
+      padding: 18px;
+      border-radius: 20px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      max-width: 550px;
+      font-size: 18px;
+    }
+
+    .question button {
+      background: linear-gradient(90deg, #00bcd4, #26c6da);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    .question button:hover {
+      background: linear-gradient(90deg, #0097a7, #00acc1);
+    }
+
+    .answer {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #444;
+      display: none;
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(90deg, #00bcd4, #26c6da);
+      color: white;
+      font-size: 14px;
+      margin-top: 40px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    h4 {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(90deg, #00bcd4, #26c6da);
+      color: white;
+      font-size: 14px;
+      margin-top: 40px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      text-decoration: none;
+      text-align: center;
+      font-size: 28px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #20b358;
+      color: #fff;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: #111827;
+      color: #e5e7eb; /* Lighter text for dark mode */
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(90deg, #005662, #007a86); /* Darker gradient */
+    }
+
+    body.dark-mode #toggleDark {
+      color: #e5e7eb; /* Ensure toggle is visible in dark header */
+    }
+
+    body.dark-mode nav {
+      background: #1f2937; /* Darker background for nav */
+      border-bottom: 1px solid #374151;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode nav a {
+      color: #00bcd4; /* Keep a bright accent color */
+    }
+
+    body.dark-mode nav a:hover {
+      background: #00bcd4;
+      color: #111827; /* Dark text on hover */
+    }
+
+    body.dark-mode .hero,
+    body.dark-mode .about,
+    body.dark-mode .question {
+      background: #1f2937;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      color: #e5e7eb; /* Lighter text color */
+    }
+
+    body.dark-mode .hero p,
+    body.dark-mode .about p {
+      color: #d1d5db; /* Slightly darker light text */
+    }
+
+    body.dark-mode .questions h2 {
+      color: #00bcd4; /* Keep accent color */
+    }
+
+    body.dark-mode .point {
+      background-color: #004c54; /* Darker version of your accent color */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .point:hover {
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark-mode .answer {
+      background: #374151; /* Darker background for answer */
+      color: #d1d5db; /* Lighter text color */
+    }
+
+    body.dark-mode footer,
+    body.dark-mode h4 {
+      background: linear-gradient(90deg, #005662, #007a86);
+      color: white;
+    }
+  </style>
+</head>
+<!-- إشعار منبثق -->
+<div id="popup" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+">
+  <div style="
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  ">
+    <!-- زر الإغلاق -->
+    <span onclick="closePopup()" style="
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #555;
+    ">&times;</span>
+
+    <h2 style="margin-bottom: 15px; color:#00bcd4;">👋 أهلاً بيك</h2>
+    <p style="margin-bottom: 20px; font-size: 16px; color:#333;">
+🚨 جاهز تتعلم دينك ببساطة؟<br>
+📘 <strong>ما لا يسع اطفال المسلمين جهله</strong><br>
+⏳ كل يوم 5 أسئلة<br>
+🏆 كل أسبوع مسابقة<br>
+📅 هنخلص الكتاب في شهرين بإذن الله!<br><br>
+خليك معانا وابدأ التحدي 💪
+    </p>
+
+    <button onclick="goWhatsApp()" style="
+      background: linear-gradient(90deg, #00bcd4, #26c6da);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    ">
+      تابعنا على واتساب
+    </button>
+  </div>
+</div>
+
+<script>
+  // إغلاق البوب-أب بس
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  // الذهاب لواتساب
+  function goWhatsApp() {
+    window.location.href = 'https://whatsapp.com/channel/0029Vb6VPps4IBhDb3oJgM0v';
+  }
+</script>
+
+<body>
+  <header>
+    <i class="bi bi-brightness-high-fill" id="toggleDark"></i>
+    <h1>𝕸𝖚𝖘𝖑𝖎𝖒 𝖙𝖊𝖊𝖓𝖆𝖌𝖊𝖗 🩵✨</h1>
+    <p>طريقك للمراهقة الآمنة.. بنور من ربك</p>
+  </header>
+
+  <nav>
+    <a href="extra.html">صفحة التفاعل 💖</a>
+    <a href="QS.html">💬 اسأل وهنجاوبك</a>
+    <a href="Teen.html">مشاكل المراهقين 💖</a>
+    <a href="book.html">📚 مكتبة مفيدة</a>
+    <a href="challenge.html">قصائد شعريه</a>
+    <a href="Quran.html">📖 مصحف Muslim Teenager 🩵✨</a>
+    <a href="azan.html">الاذان</a>
+    <a href="Quiz.html">اختبر نفسك</a>
+    <a href="table.html">📅 الجدول اليومي الديني</a>
+    <a href="guide.html">دليلك العملي كـ مسلم/ـة مراهق/ـة</a>
+    <a href="MQS.html">✨ بتسأل؟ تعالى نجاوبك!</a>
+    <a href="save.html">احفظ القرآن</a>
+    <a href="azkar.html">اذكار الصباح والمساء ✨🩵</a>
+  </nav>
+
+  <section class="hero">
+    <p>🤍 مرحبًا بك في مساحة آمنة لكل مراهق مسلم!<br>
+      هنا هتلاقي إجابات دينية مقنعة لأسئلتك، بطريقة شبابية مفهومة، بدون ما حد يحكم عليك.</p>
+  </section>
+
+  <section class="about">
+    <p>👋 إحنا فاهمين إن المراهقة مش سهلة، وده مش عيب.<br>
+      بس الغلط بيبدأ لما تسأل السؤال الصح، وتاخد الإجابة من المكان الغلط.<br>
+      علشان كده، الموقع ده بيجاوبك من القرآن والسنة، بأسلوب بسيط وشبابي.</p>
+  </section>
+
+  <section class="questions">
+    <h2 onclick="location.href='MQS.html'" style="cursor: pointer;" class="point">✨ بتسأل؟ تعالى نجاوبك!</h2>
+
+    <div class="question">
+      هل الحب حرام؟<br>
+      <button onclick="toggleAnswer(this)">شوف الإجابة ✨</button>
+      <div class="answer">الحب نفسه مش حرام لأنه شعور طبيعي، لكن الحرام هو الأفعال اللي ممكن تحصل بسببه (زي العلاقات
+        الغلط أو الخلوة أو الكلام الخارج).</div>
+    </div>
+
+    <div class="question">
+      ليه الصلاة بتضايقني؟<br>
+      <button onclick="toggleAnswer(this)">شوف الإجابة ✨</button>
+      <div class="answer">ده طبيعي لو الشيطان بيحاول يبعدك أو لو مش فاهم قيمة الصلاة. الحل إنك تركز في معاني الآيات
+        وتطلب من ربنا يساعدك تحب الصلاة.</div>
+    </div>
+
+    <div class="question">
+      لو ما قلتش لأمي كل حاجة.. أبقى كداب؟<br>
+      <button onclick="toggleAnswer(this)">شوف الإجابة ✨</button>
+      <div class="answer">لأ طبعًا، مش لازم تقول كل تفاصيلك طالما مش بتجذب، لكن متخبيش حاجة مهمة أو حاجة ممكن تأذيك أو
+        تأذي غيرك.</div>
+    </div>
+
+    <div class="question">
+      ينفع أصاحب ولد/بنت في المدرسة؟<br>
+      <button onclick="toggleAnswer(this)">شوف الإجابة ✨</button>
+      <div class="answer">الصداقة البريئة في حدود الأدب والضرورة (زي المذاكرة أو الشغل) مش حرام، لكن المصاحبة اللي فيها
+        مزاح أو مشاعر أو خصوصية غلط وممكن توقع في حرام.</div>
+    </div>
+
+    <div class="question">
+      أنا مش بحب شكلي.. ده حرام؟<br>
+      <button onclick="toggleAnswer(this)">شوف الإجابة ✨</button>
+      <div class="answer">مش حرام إنك تحس كده، لكن غلط تستسلم للإحساس ده. ربنا خلقك في أحسن صورة، وحب النفس شكر لله.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+<a href="https://whatsapp.com/channel/0029Vb6VPps4IBhDb3oJgM0v" class="whatsapp-float" target="_blank">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+    𝕸𝖚𝖘𝖑𝖎𝖒 𝖙𝖊𝖊𝖓𝖆𝖌𝖊𝖗 🩵✨ – معًا، علشان نعيش مراهقة آمنة ونقرب من ربنا أكتر 🩵✨
+  </footer>
+  <footer>Made With ❤️ By Mohamed Abdelfatah</footer>
+  <h4>Website Owner : Ahd Mahmoud</h4>
+
+  <script>
+    function toggleAnswer(button) {
+      const answer = button.nextElementSibling;
+      answer.style.display = answer.style.display === "block" ? "none" : "block";
+    }
+
+    const toggle = document.getElementById('toggleDark');
+    const body = document.body;
+
+    // Check for user's preference in local storage
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark-mode');
+      toggle.classList.remove('bi-brightness-high-fill');
+      toggle.classList.add('bi-moon');
+    } else {
+      toggle.classList.remove('bi-moon');
+      toggle.classList.add('bi-brightness-high-fill');
+    }
+
+    toggle.addEventListener('click', function () {
+      body.classList.toggle('dark-mode');
+      this.classList.toggle('bi-moon');
+      this.classList.toggle('bi-brightness-high-fill');
+
+      // Save user's preference
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+  </script>
+
+</body>
+
+</html>

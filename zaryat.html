@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حفظ جزء الذاريات</title>
+  <style>
+    body {
+      font-family: "Cairo", sans-serif;
+      background: #0b1220;
+      color: #e6eef8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      background: linear-gradient(135deg, #8e44ad, #6c3483);
+      padding: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      border-bottom: 4px solid #0b1220;
+    }
+
+    .container {
+      max-width: 95%;
+      margin: 20px auto;
+      padding: 10px;
+    }
+
+    .sura {
+      background: #1f4068;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 10px 0;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sura.done {
+      background: #14532d;
+      opacity: 0.9;
+    }
+
+    .sura h3 {
+      margin: 0;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .buttons button {
+      flex: 1 1 40%;
+      min-width: 100px;
+      background: #9b59b6;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+      color: #fff;
+    }
+
+    .buttons button:hover {
+      background: #8e44ad;
+    }
+
+    .done-btn {
+      background: #f39c12 !important;
+    }
+
+    .progress {
+      margin: 25px auto;
+      width: 95%;
+      max-width: 600px;
+      background: #1f4068;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 22px;
+      width: 0%;
+      background: #9b59b6;
+      transition: width 0.5s ease-in-out;
+    }
+
+    p {
+      text-align: center;
+      font-size: 16px;
+    }
+
+    #nextPartBtn {
+      display: none;
+      margin: 20px auto;
+      padding: 12px 20px;
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+    }
+    #nextPartBtn:hover {
+      background: #219150;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        font-size: 20px;
+        padding: 15px;
+      }
+
+      .sura h3 {
+        font-size: 16px;
+      }
+
+      .buttons button {
+        flex: 1 1 45%;
+        font-size: 13px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>📖 حفظ جزء الذاريات</header>
+
+  <div class="container" id="suraContainer"></div>
+
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <p>📊 نسبة الحفظ: <span id="progressText">0%</span></p>
+
+  <button id="nextPartBtn" onclick="goNext()">🚀 اذهب للجزء التالي</button>
+
+  <script>
+    const suras = [
+      {name: "الذاريات", file: "051.mp3"},
+      {name: "الطور", file: "052.mp3"},
+      {name: "النجم", file: "053.mp3"},
+      {name: "القمر", file: "054.mp3"},
+      {name: "الرحمن", file: "055.mp3"},
+      {name: "الواقعة", file: "056.mp3"},
+      {name: "الحديد", file: "057.mp3"}
+    ];
+
+    const container = document.getElementById("suraContainer");
+    const progressBar = document.getElementById("progressBar");
+    const progressText = document.getElementById("progressText");
+    const nextPartBtn = document.getElementById("nextPartBtn");
+
+    // load saved progress
+    let saved = JSON.parse(localStorage.getItem("savedZariyat")) || [];
+
+    // create sura blocks
+    suras.forEach((sura, index) => {
+      const div = document.createElement("div");
+      div.className = "sura";
+      if (saved.includes(index)) div.classList.add("done");
+      div.innerHTML = `
+        <h3>${sura.name}</h3>
+        <div class="buttons">
+          <button class="play-btn">▶️ تشغيل</button>
+          <button class="pause-btn">⏸️ إيقاف مؤقت</button>
+          <button class="stop-btn">⏹️ إيقاف كامل</button>
+          <button class="repeat-btn">🔁 تكرار</button>
+          <button class="done-btn">✅ تم الحفظ</button>
+        </div>
+      `;
+      container.appendChild(div);
+
+      const audio = new Audio(`https://server8.mp3quran.net/afs/${sura.file}`);
+      let isLooping = false;
+
+      div.querySelector(".play-btn").addEventListener("click", () => {
+        audio.loop = isLooping;
+        audio.play();
+      });
+
+      div.querySelector(".pause-btn").addEventListener("click", () => {
+        audio.pause();
+      });
+
+      div.querySelector(".stop-btn").addEventListener("click", () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+
+      div.querySelector(".repeat-btn").addEventListener("click", () => {
+        isLooping = !isLooping;
+        audio.loop = isLooping;
+        alert(isLooping ? "🔁 التكرار مفعل" : "⏹️ التكرار متوقف");
+      });
+
+      div.querySelector(".done-btn").addEventListener("click", () => {
+        if (!saved.includes(index)) {
+          saved.push(index);
+          localStorage.setItem("savedZariyat", JSON.stringify(saved));
+          div.classList.add("done");
+          updateProgress();
+          checkAllSaved();
+        }
+      });
+    });
+
+    function checkAllSaved() {
+      if (saved.length === suras.length) {
+        nextPartBtn.style.display = "block";
+      }
+    }
+
+    function updateProgress() {
+      let percent = Math.round((saved.length / suras.length) * 100);
+      progressBar.style.width = percent + "%";
+      progressText.textContent = percent + "%";
+    }
+
+    function goNext() {
+      window.location.href = "a7qaf.html"; // غيّر اللينك للجزء اللي بعده
+    }
+
+    updateProgress();
+    checkAllSaved();
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>جزء المجادلة</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      padding: 20px;
+      font-size: 28px;
+    }
+    .sura {
+      background: rgba(255, 255, 255, 0.08);
+      margin: 15px auto;
+      padding: 15px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+    .sura.done {
+      background: rgba(76, 175, 80, 0.6);
+    }
+    .buttons button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .play-btn {background: #4caf50; color: white;}
+    .pause-btn {background: #ffc107; color: black;}
+    .stop-btn {background: #f44336; color: white;}
+    .repeat-btn {background: #2196f3; color: white;}
+    .done-btn {background: #9c27b0; color: white;}
+    .progress {
+      width: 90%;
+      max-width: 500px;
+      background: #444;
+      margin: 20px auto;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 20px;
+      width: 0%;
+      background: #4caf50;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      color: white;
+    }
+    .next-part {
+      margin: 20px;
+      padding: 12px 20px;
+      background: #ff9800;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .next-part:hover {
+      background: #e68900;
+    }
+  </style>
+</head>
+<body>
+  <h1>📖 جزء المجادلة</h1>
+  <div id="suraContainer"></div>
+
+  <div class="progress">
+    <div id="progressBar" class="progress-bar">0%</div>
+  </div>
+
+  <button id="nextBtn" class="next-part" style="display:none;">
+    👉 الانتقال للجزء التالي
+  </button>
+
+  <script>
+    const suras = [
+      {name: "المجادلة", file: "058.mp3"},
+      {name: "الحشر", file: "059.mp3"},
+      {name: "الممتحنة", file: "060.mp3"},
+      {name: "الصف", file: "061.mp3"},
+      {name: "الجمعة", file: "062.mp3"},
+      {name: "المنافقون", file: "063.mp3"},
+      {name: "التغابن", file: "064.mp3"},
+      {name: "الطلاق", file: "065.mp3"},
+      {name: "التحريم", file: "066.mp3"}
+    ];
+
+    const container = document.getElementById("suraContainer");
+    const progressBar = document.getElementById("progressBar");
+    const progressText = document.getElementById("progressText");
+    const nextBtn = document.getElementById("nextBtn");
+
+    let saved = JSON.parse(localStorage.getItem("savedMujadila")) || [];
+
+    suras.forEach((sura, index) => {
+      const div = document.createElement("div");
+      div.className = "sura";
+      if (saved.includes(index)) div.classList.add("done");
+      div.innerHTML = `
+        <h3>${sura.name}</h3>
+        <div class="buttons">
+          <button class="play-btn">▶️ تشغيل</button>
+          <button class="pause-btn">⏸️ إيقاف مؤقت</button>
+          <button class="stop-btn">⏹️ إيقاف كامل</button>
+          <button class="repeat-btn">🔁 تكرار</button>
+          <button class="done-btn">✅ تم الحفظ</button>
+        </div>
+      `;
+      container.appendChild(div);
+
+      const audio = new Audio(`https://server8.mp3quran.net/afs/${sura.file}`);
+      let isLooping = false;
+
+      div.querySelector(".play-btn").addEventListener("click", () => {
+        audio.loop = isLooping;
+        audio.play();
+      });
+
+      div.querySelector(".pause-btn").addEventListener("click", () => {
+        audio.pause();
+      });
+
+      div.querySelector(".stop-btn").addEventListener("click", () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+
+      div.querySelector(".repeat-btn").addEventListener("click", () => {
+        isLooping = !isLooping;
+        audio.loop = isLooping;
+        alert(isLooping ? "🔁 التكرار مفعل" : "⏹️ التكرار متوقف");
+      });
+
+      div.querySelector(".done-btn").addEventListener("click", () => {
+        if (!saved.includes(index)) {
+          saved.push(index);
+          localStorage.setItem("savedMujadila", JSON.stringify(saved));
+          div.classList.add("done");
+          updateProgress();
+        }
+      });
+    });
+
+    function updateProgress() {
+      let percent = Math.round((saved.length / suras.length) * 100);
+      progressBar.style.width = percent + "%";
+      progressBar.textContent = percent + "%";
+
+      if (percent === 100) {
+        nextBtn.style.display = "inline-block";
+      }
+    }
+
+    nextBtn.addEventListener("click", () => {
+      window.location.href = "zaryat.html"; // هنا خليها الصفحة اللي بعدها
+    });
+
+    updateProgress();
+  </script>
+</body>
+</html>
